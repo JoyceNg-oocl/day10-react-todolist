@@ -10,7 +10,7 @@ export const initState = [
   {id: 3, text: "I already done this item", done: true},
 ];
 
-function TodoGroup(props) {
+function TodoGroup() {
   const {state, dispatch} = useContext(TodoContext);
 
   return (
@@ -25,7 +25,7 @@ function TodoGroup(props) {
                 dispatch({type: "DELETE_TODO", payload: {id: item.id}})
               }
             >
-              X
+              x
             </button>
           </div>
         );
