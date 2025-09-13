@@ -1,8 +1,21 @@
+.app-container,
+.todo-container {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+}
+
+.todo-group {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
 .todo-item {
-  width: 320px;
-  padding: 8px;
+  width: 424px;
+  padding: 4px;
   border: 1px solid black;
-  margin-top: 12px;
   text-align: center;
 }
 
@@ -12,9 +25,33 @@
 }
 
 .todo-delete {
-  margin-left: 16px;
-  margin-top: 12px;
-  padding: 8px;
+  margin-left: 12px;
+  align-self: stretch;
+  width: fit-content;
   cursor: pointer;
   font-size: medium;
+}
+
+.todo-add-container {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  margin-top: 12px;
+  gap: 8px;
+}
+
+.todo-add {
+  background-color: #6495ee;
+  color: white;
+  border: none;
+  margin-left: 4px;
+  width: 64px;
+  cursor: pointer;
+  align-self: stretch;
+}
+
+.todo-input {
+  width: 316px;
+  height: 24px;
 }
