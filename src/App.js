@@ -1,4 +1,4 @@
-import { useContext, useReducer} from "react";
+import {useContext, useReducer} from "react";
 import "./App.css"
 import {TodoItem} from "./components/TodoItem";
 import {todoReducer} from "./reducers/TodoReducer";
@@ -9,15 +9,24 @@ export const initState = [
   {id: 2, text: "This is the second thing I need to do", done: false},
   {id: 3, text: "I already done this item", done: true},
 ];
-// export const TodoContext = createContext()
 
-function TodoGroup() {
+function TodoGroup(props) {
   const {state, dispatch} = useContext(TodoContext)
 
   return <div>
     {
       state.map((item, index) => {
-        return <TodoItem todo={item} key={index} index={index}/>
+        return (
+          <div style={{display: "flex", alignItems: "center"}}>
+            <TodoItem todo={item} key={index} index={index}/>
+            <button
+              className={"todo-delete"}
+              onClick={() => dispatch({type: "DELETE_TODO", payload: {id: item.id}})}
+            >
+              X
+            </button>
+          </div>
+        )
       })
     }
   </div>

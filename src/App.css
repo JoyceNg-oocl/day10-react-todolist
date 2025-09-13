@@ -2,10 +2,19 @@
   width: 320px;
   padding: 8px;
   border: 1px solid black;
-  margin-top: 10px;
+  margin-top: 12px;
   text-align: center;
 }
 
 .todo-item .todo-done {
-    text-decoration: line-through;
+  text-decoration: line-through;
+  justify-content: center;
+}
+
+.todo-delete {
+  margin-left: 16px;
+  margin-top: 12px;
+  padding: 8px;
+  cursor: pointer;
+  font-size: medium;
 }
