@@ -3,6 +3,7 @@ import "./App.css";
 import {todoReducer} from "./reducers/TodoReducer";
 import {TodoContext} from "./contexts/TodoContext";
 import {TodoGroup} from "./components/TodoGroup";
+import {TodoAdd} from "./components/TodoAdd";
 
 export const initState = [
   {id: 1, text: "This is the first thing I need to do", done: false},
@@ -19,19 +20,11 @@ function App() {
         <TodoContext.Provider value={{state, dispatch}}>
           <TodoGroup/>
         </TodoContext.Provider>
-        <div className="todo-add-container">
-          <input className={"todo-input"} type={"text"}/>
-          <button
-            className={"todo-add"}
-            onClick={() => {
-              const input = document.querySelector(".todo-input");
-              dispatch({type: "ADD_TODO", payload: {text: input.value}});
-              input.value = "";
-            }}
-          >
-            add
-          </button>
-        </div>
+        <TodoAdd onClick={() => {
+          const input = document.querySelector(".todo-input");
+          dispatch({type: "ADD_TODO", payload: {text: input.value}});
+          input.value = "";
+        }}/>
       </div>
     </div>
   );
