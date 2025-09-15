@@ -15,7 +15,7 @@ export function todoReducer(state, action) {
         return value;
       });
     case "DELETE_TODO":
-      return state.filter((value) => value.id !== action.payload.id);
+      return state.filter((todo) => todo.id !== action.payload.id);
     case "ADD_TODO":
       return [...state, action.payload];
     case "LOAD_TODOS":

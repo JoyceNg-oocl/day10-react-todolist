@@ -3,6 +3,7 @@ import {TodoContext} from "../contexts/TodoContext";
 import { IoMdMore, IoMdTrash } from 'react-icons/io';
 import { MdZoomOutMap } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
+import {api} from "../api/mockApi";
 
 export function TodoItem(props) {
   const {dispatch} = useContext(TodoContext);
@@ -18,10 +19,9 @@ export function TodoItem(props) {
   }
 
   function handleDelete() {
-    dispatch({
-      type: "DELETE_TODO",
-      payload: {id: props.todo.id}
-    });
+    api.delete(`/todos/${props.todo.id}`)
+      .then(() => console.log("Deleted"))
+      .then((todo) => dispatch({type: "DELETE_TODO", payload: {id: props.todo.id}}));
     setMenuOpen(false);
   }
 
