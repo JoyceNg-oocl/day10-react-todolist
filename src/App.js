@@ -3,7 +3,8 @@ import "./App.css";
 import {todoReducer} from "./reducers/TodoReducer";
 import {TodoContext} from "./contexts/TodoContext";
 import {TodoList} from "./components/TodoList";
-import {createBrowserRouter, NavLink, Outlet, RouterProvider, useRouteError} from "react-router";
+import {createBrowserRouter, NavLink, Outlet, RouterProvider} from "react-router";
+import {ErrorPage} from "./pages/ErrorPage";
 
 export const initState = [
   {id: 1, text: "This is the first thing I need to do", done: false},
@@ -24,22 +25,6 @@ function DefaultLayout() {
       <Outlet/>
     </main>
   </div>;
-}
-
-function ErrorPage() {
-  const error = useRouteError();
-  return <div>
-    {error.status === 404
-      ? <div className="not-found">
-        <h1>404 Not Found</h1>
-        <span>
-          The page you are looking for does not exist.
-        </span>
-      </div>
-      : <div>{JSON.stringify(error)}</div>
-
-    }
-  </div>
 }
 
 const routes = createBrowserRouter([
