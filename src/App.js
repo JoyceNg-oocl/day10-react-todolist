@@ -2,8 +2,7 @@ import {useReducer} from "react";
 import "./App.css";
 import {todoReducer} from "./reducers/TodoReducer";
 import {TodoContext} from "./contexts/TodoContext";
-import {TodoGroup} from "./components/TodoGroup";
-import {TodoAdd} from "./components/TodoAdd";
+import {TodoList} from "./components/TodoList";
 
 export const initState = [
   {id: 1, text: "This is the first thing I need to do", done: false},
@@ -18,13 +17,8 @@ function App() {
       <h2>Todo List</h2>
       <div className="todo-container">
         <TodoContext.Provider value={{state, dispatch}}>
-          <TodoGroup/>
+          <TodoList/>
         </TodoContext.Provider>
-        <TodoAdd onClick={() => {
-          const input = document.querySelector(".todo-input");
-          dispatch({type: "ADD_TODO", payload: {text: input.value}});
-          input.value = "";
-        }}/>
       </div>
     </div>
   );
