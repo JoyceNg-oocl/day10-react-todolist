@@ -5,22 +5,22 @@ import { MdZoomOutMap } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
 import {api} from "../api/mockApi";
 
-export function TodoItem(props) {
+export function TodoItem({todo}) {
   const {dispatch} = useContext(TodoContext);
   const [menuOpen, setMenuOpen] = useState(false);
   const menuRef = useRef(null);
   const navigate = useNavigate();
 
   function makeAsDone() {
-    api.put(`/todos/${props.todo.id}`, {...props.todo, done: !props.todo.done})
-      .then(() => console.log("Updated"))
-      .then((todo) => dispatch({type: "TOGGLE_TODO", payload: {id: props.todo.id}}));
+    api.put(`/todos/${todo.id}`, {...todo, done: !todo.done})
+      .then ((response) => response.data)
+      .then((todo) => dispatch({type: "UPDATE_TODO", payload: todo}));
   }
 
   function handleDelete() {
-    api.delete(`/todos/${props.todo.id}`)
+    api.delete(`/todos/${todo.id}`)
       .then(() => console.log("Deleted"))
-      .then((todo) => dispatch({type: "DELETE_TODO", payload: {id: props.todo.id}}));
+      .then((todo) => dispatch({type: "DELETE_TODO", payload: todo}));
     setMenuOpen(false);
   }
 
@@ -41,10 +41,10 @@ export function TodoItem(props) {
   return (
     <div className={"todo-item"}>
       <span
-        className={props.todo.done ? "todo-done" : ""}
+        className={todo.done ? "todo-done" : ""}
         onClick={makeAsDone}
       >
-        {props.todo.text}
+        {todo.text}
       </span>
       <span className="todo-more-wrapper">
         <IoMdMore className="todo-more-icon" onClick={() => setMenuOpen(!menuOpen)} />
@@ -54,7 +54,7 @@ export function TodoItem(props) {
               className="todo-menu-item"
               onClick={() => {
                 setMenuOpen(false);
-                navigate(`/todos/${props.todo.id}`);
+                navigate(`/todos/${todo.id}`);
               }}
             >
               <MdZoomOutMap style={{marginRight: 6}} /> Details
