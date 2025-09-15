@@ -9,7 +9,7 @@ import {TodoDetailPage} from "./pages/TodoDetailPage";
 import {DefaultLayout} from "./layouts/DefaultLayout";
 import {TodoDonePage} from "./pages/TodoDonePage";
 import {AboutUsPage} from "./pages/AboutUsPage";
-import axios from "axios";
+import {api} from "./api/mockApi";
 
 const routes = createBrowserRouter([
   {
@@ -37,12 +37,6 @@ const routes = createBrowserRouter([
     ],
   },
 ]);
-
-const api = axios.create({
-  baseURL: "https://68c7ac8e5d8d9f514732879a.mockapi.io/",
-  headers: {"Content-Type": "application/json"},
-  timeout: 10000,
-})
 
 function App() {
   const [state, dispatch] = useReducer(todoReducer,  []);
