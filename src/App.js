@@ -32,8 +32,7 @@ const routes = createBrowserRouter([
       {
         path: "/about",
         element: <AboutUsPage/>,
-      }
-
+      },
     ],
   },
 ]);
@@ -42,8 +41,9 @@ function App() {
   const [state, dispatch] = useReducer(todoReducer, []);
   const {loadTodo} = useTodoService();
   useEffect(() => {
-    loadTodo()
-      .then(todos => dispatch({type: "LOAD_TODOS", payload: todos}))
+    loadTodo().then((todos) =>
+      dispatch({type: "LOAD_TODOS", payload: todos})
+    );
   }, [dispatch]);
   return (
     <div className="todo-container">
