@@ -14,14 +14,14 @@ export function TodoGroup() {
           return (
             <div style={{display: "flex", alignItems: "center"}} key={item.id}>
               <TodoItem todo={item} key={index} index={index}/>
-              <button
-                className={"todo-delete"}
-                onClick={() =>
-                  dispatch({type: "DELETE_TODO", payload: {id: item.id}})
-                }
-              >
-                x
-              </button>
+            {/*  <button*/}
+            {/*    className={"todo-delete"}*/}
+            {/*    onClick={() =>*/}
+            {/*      dispatch({type: "DELETE_TODO", payload: {id: item.id}})*/}
+            {/*    }*/}
+            {/*  >*/}
+            {/*    x*/}
+            {/*  </button>*/}
             </div>
           );
         })

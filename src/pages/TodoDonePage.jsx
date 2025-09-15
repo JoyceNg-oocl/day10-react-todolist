@@ -5,8 +5,8 @@ export function TodoDonePage() {
   const {state} = useContext(TodoContext);
   const todoDone = state.filter((todo) => todo.done === true);
 
-  return <div className={"todo-done-container"}>
-    <h1>Done Todos</h1>
+  return <div>
+    <h2 style={{textAlign: "center"}}>Done Todos</h2>
     {todoDone.length === 0
       ? <p>No done todos yet.</p>
       : todoDone.map((todo) => (

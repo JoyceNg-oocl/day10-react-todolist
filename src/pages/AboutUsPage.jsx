@@ -1,6 +1,6 @@
 export function AboutUsPage() {
   return <div>
-    <h1>About us</h1>
+    <h2>About us</h2>
     <p>&copy; Copyright</p>
   </div>;
 }
