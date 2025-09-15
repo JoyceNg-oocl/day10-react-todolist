@@ -2,9 +2,9 @@ import {useReducer} from "react";
 import "./App.css";
 import {todoReducer} from "./reducers/TodoReducer";
 import {TodoContext} from "./contexts/TodoContext";
-import {TodoList} from "./components/TodoList";
 import {createBrowserRouter, NavLink, Outlet, RouterProvider} from "react-router";
 import {ErrorPage} from "./pages/ErrorPage";
+import {HomePage} from "./pages/HomePage";
 
 export const initState = [
   {id: 1, text: "This is the first thing I need to do", done: false},
@@ -35,7 +35,7 @@ const routes = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <TodoList/>,
+        element: <HomePage/>,
       },
     ],
   },
