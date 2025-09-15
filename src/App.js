@@ -1,10 +1,11 @@
-import {useReducer} from "react";
+import {useContext, useReducer} from "react";
 import "./App.css";
 import {todoReducer} from "./reducers/TodoReducer";
 import {TodoContext} from "./contexts/TodoContext";
-import {createBrowserRouter, NavLink, Outlet, RouterProvider} from "react-router";
+import {createBrowserRouter, NavLink, Outlet, RouterProvider, useParams} from "react-router";
 import {ErrorPage} from "./pages/ErrorPage";
 import {HomePage} from "./pages/HomePage";
+import {TodoItem} from "./components/TodoItem";
 
 export const initState = [
   {id: 1, text: "This is the first thing I need to do", done: false},
@@ -27,6 +28,20 @@ function DefaultLayout() {
   </div>;
 }
 
+function TodoDetailPage() {
+  const {id} = useParams();
+  const {state} = useContext(TodoContext);
+  const todo = state.filter((todo) => todo.id === parseInt(id));
+
+  if (todo.length === 0) {
+    return <div>Todo item with id {id} not found.</div>;
+  }
+
+  return <div>
+    <TodoItem todo={todo[0]} index={id}/>
+  </div>;
+}
+
 const routes = createBrowserRouter([
   {
     path: "/",
@@ -37,6 +52,10 @@ const routes = createBrowserRouter([
         path: "/",
         element: <HomePage/>,
       },
+      {
+        path: "/todos/:id",
+        element: <TodoDetailPage/>,
+      }
     ],
   },
 ]);
