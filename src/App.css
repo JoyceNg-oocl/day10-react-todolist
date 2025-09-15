@@ -55,3 +55,11 @@
   width: 316px;
   height: 24px;
 }
+
+.todo-done-container {
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  cursor: pointer;
+  text-align: center;
+}
