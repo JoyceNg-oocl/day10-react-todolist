@@ -1,8 +1,44 @@
 .todo-container {
+  max-width: 600px;
+  margin: 40px auto;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  padding: 24px;
   display: flex;
-  width: 100%;
   flex-direction: column;
   align-items: center;
+}
+
+.app-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.app-header h1 {
+  margin: 0 0 12px 0;
+  color: #1976d2;
+  font-size: 2rem;
+}
+
+nav {
+  display: flex;
+  gap: 16px;
+}
+
+nav a {
+  text-decoration: none;
+  color: #1976d2;
+  font-weight: bold;
+  padding: 6px 12px;
+  border-radius: 4px;
+  transition: background 0.2s;
+}
+
+nav a:hover {
+  background: #e3f2fd;
 }
 
 .todo-group {

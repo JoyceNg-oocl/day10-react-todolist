@@ -2,13 +2,11 @@ import {NavLink, Outlet} from "react-router";
 
 export function DefaultLayout() {
   return <div>
-    <header>
+    <header className="app-header">
       <nav>
-        <ul>
-          <li><NavLink to={"/"}>Home</NavLink></li>
-          <li><NavLink to={"/todos/done"}>Done</NavLink></li>
-          <li><NavLink to={"/about"}>About us</NavLink></li>
-        </ul>
+        <NavLink to="/">Home</NavLink>
+        <NavLink to="/todos/done">Done</NavLink>
+        <NavLink to="/about">About Us</NavLink>
       </nav>
     </header>
     <main>
