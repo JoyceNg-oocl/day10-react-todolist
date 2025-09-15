@@ -3,7 +3,7 @@ import {TodoAdd} from "./TodoAdd";
 
 export function TodoList(props) {
   return <>
-    <h2>Todo List</h2>
+    <h2 style={{textAlign: "center"}}>Todo List</h2>
     <TodoGroup/>
     <TodoAdd/>
   </>;
