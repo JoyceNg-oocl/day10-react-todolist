@@ -3,7 +3,7 @@ import {TodoContext} from "../contexts/TodoContext";
 import {TodoItem} from "./TodoItem";
 
 export function TodoGroup() {
-  const {state, dispatch} = useContext(TodoContext);
+  const {state} = useContext(TodoContext);
 
   return (
     <div className={"todo-group"}>

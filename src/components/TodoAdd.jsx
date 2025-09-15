@@ -3,7 +3,7 @@ import {TodoContext} from "../contexts/TodoContext";
 import {useTodoService} from "../useTodoService.";
 
 export function TodoAdd() {
-  const {state, dispatch} = useContext(TodoContext);
+  const {dispatch} = useContext(TodoContext);
   const {createTodo} = useTodoService();
 
   function handleSubmit() {
