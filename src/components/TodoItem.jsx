@@ -1,12 +1,13 @@
-import {useContext, useState, useRef, useEffect} from "react";
+import {useContext, useEffect, useRef, useState} from "react";
 import {TodoContext} from "../contexts/TodoContext";
-import { IoMdMore, IoMdTrash } from 'react-icons/io';
-import { MdZoomOutMap } from "react-icons/md";
-import { useNavigate } from "react-router-dom";
+import {IoMdMore, IoMdTrash} from 'react-icons/io';
+import {MdZoomOutMap} from "react-icons/md";
+import {useNavigate} from "react-router-dom";
 import {api} from "../api/mockApi";
 
 const updateTodo = (todo) => {
-  return api.put(`/todos/${todo.id}`, {...todo, done: !todo.done});
+  return api.put(`/todos/${todo.id}`, {...todo, done: !todo.done})
+    .then((response) => response.data);
 }
 
 const deleteTodo = (todo) => {
@@ -21,7 +22,6 @@ export function TodoItem({todo}) {
 
   function makeAsDone() {
     updateTodo(todo)
-      .then ((response) => response.data)
       .then((todo) => dispatch({type: "UPDATE_TODO", payload: todo}));
   }
 
@@ -37,6 +37,7 @@ export function TodoItem({todo}) {
         setMenuOpen(false);
       }
     }
+
     if (menuOpen) {
       document.addEventListener("mousedown", handleClickOutside);
     }
@@ -54,7 +55,7 @@ export function TodoItem({todo}) {
         {todo.text}
       </span>
       <span className="todo-more-wrapper">
-        <IoMdMore className="todo-more-icon" onClick={() => setMenuOpen(!menuOpen)} />
+        <IoMdMore className="todo-more-icon" onClick={() => setMenuOpen(!menuOpen)}/>
         {menuOpen && (
           <div className="todo-menu" ref={menuRef}>
             <button
@@ -64,10 +65,10 @@ export function TodoItem({todo}) {
                 navigate(`/todos/${todo.id}`);
               }}
             >
-              <MdZoomOutMap style={{marginRight: 6}} /> Details
+              <MdZoomOutMap style={{marginRight: 6}}/> Details
             </button>
             <button className="todo-menu-item todo-menu-delete" onClick={handleDelete}>
-              <IoMdTrash style={{marginRight: 6}} /> Delete
+              <IoMdTrash style={{marginRight: 6}}/> Delete
             </button>
           </div>
         )}
