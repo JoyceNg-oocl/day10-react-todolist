@@ -1,4 +1,4 @@
-import {useReducer} from "react";
+import {useEffect, useReducer} from "react";
 import "./App.css";
 import {todoReducer} from "./reducers/TodoReducer";
 import {TodoContext} from "./contexts/TodoContext";
@@ -9,12 +9,7 @@ import {TodoDetailPage} from "./pages/TodoDetailPage";
 import {DefaultLayout} from "./layouts/DefaultLayout";
 import {TodoDonePage} from "./pages/TodoDonePage";
 import {AboutUsPage} from "./pages/AboutUsPage";
-
-export const initState = [
-  {id: 1, text: "This is the first thing I need to do", done: false},
-  {id: 2, text: "This is the second thing I need to do", done: false},
-  {id: 3, text: "I already done this item", done: true},
-];
+import axios from "axios";
 
 const routes = createBrowserRouter([
   {
@@ -43,8 +38,19 @@ const routes = createBrowserRouter([
   },
 ]);
 
+const api = axios.create({
+  baseURL: "https://68c7ac8e5d8d9f514732879a.mockapi.io/",
+  headers: {"Content-Type": "application/json"},
+  timeout: 10000,
+})
+
 function App() {
-  const [state, dispatch] = useReducer(todoReducer, initState);
+  const [state, dispatch] = useReducer(todoReducer,  []);
+  useEffect(() => {
+    api.get("/todos")
+      .then(response => response.data)
+      .then(todos => dispatch({type: "LOAD_TODOS", payload: todos}))
+  }, [dispatch]);
   return (
     <div className="todo-container">
       <TodoContext.Provider value={{state, dispatch}}>

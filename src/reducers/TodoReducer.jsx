@@ -25,6 +25,8 @@ export function todoReducer(state, action) {
         done: false,
       };
       return [...state, newTodo];
+    case "LOAD_TODOS":
+      return action.payload;
     default:
       return state;
   }
