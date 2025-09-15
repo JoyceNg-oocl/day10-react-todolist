@@ -10,6 +10,7 @@ import {DefaultLayout} from "./layouts/DefaultLayout";
 import {TodoDonePage} from "./pages/TodoDonePage";
 import {AboutUsPage} from "./pages/AboutUsPage";
 import {api} from "./api/mockApi";
+import {useTodoService} from "./useTodoService.";
 
 const routes = createBrowserRouter([
   {
@@ -38,13 +39,9 @@ const routes = createBrowserRouter([
   },
 ]);
 
-function loadTodo() {
-  return api.get("/todos")
-    .then(response => response.data);
-}
-
 function App() {
   const [state, dispatch] = useReducer(todoReducer,  []);
+  const {loadTodo} = useTodoService();
   useEffect(() => {
     loadTodo()
       .then(todos => dispatch({type: "LOAD_TODOS", payload: todos}))

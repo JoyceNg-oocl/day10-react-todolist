@@ -1,15 +1,10 @@
 import {useContext} from "react";
 import {TodoContext} from "../contexts/TodoContext";
-import {api} from "../api/mockApi";
-
-const createTodo = (input) => {
-  return api.post("/todos", {text: input.value, done: false})
-    .then((response) => response.data);
-}
+import {useTodoService} from "../useTodoService.";
 
 export function TodoAdd() {
   const {state, dispatch} = useContext(TodoContext);
-
+  const {createTodo} = useTodoService();
 
   function handleSubmit() {
     return () => {

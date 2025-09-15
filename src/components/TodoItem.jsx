@@ -3,22 +3,14 @@ import {TodoContext} from "../contexts/TodoContext";
 import {IoMdMore, IoMdTrash} from 'react-icons/io';
 import {MdZoomOutMap} from "react-icons/md";
 import {useNavigate} from "react-router-dom";
-import {api} from "../api/mockApi";
-
-const updateTodo = (todo) => {
-  return api.put(`/todos/${todo.id}`, {...todo, done: !todo.done})
-    .then((response) => response.data);
-}
-
-const deleteTodo = (todo) => {
-  return api.delete(`/todos/${todo.id}`);
-}
+import {useTodoService} from "../useTodoService.";
 
 export function TodoItem({todo}) {
   const {dispatch} = useContext(TodoContext);
   const [menuOpen, setMenuOpen] = useState(false);
   const menuRef = useRef(null);
   const navigate = useNavigate();
+  const {updateTodo, deleteTodo} = useTodoService();
 
   function makeAsDone() {
     updateTodo(todo)
