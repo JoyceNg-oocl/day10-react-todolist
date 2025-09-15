@@ -5,6 +5,14 @@ import { MdZoomOutMap } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
 import {api} from "../api/mockApi";
 
+const updateTodo = (todo) => {
+  return api.put(`/todos/${todo.id}`, {...todo, done: !todo.done});
+}
+
+const deleteTodo = (todo) => {
+  return api.delete(`/todos/${todo.id}`);
+}
+
 export function TodoItem({todo}) {
   const {dispatch} = useContext(TodoContext);
   const [menuOpen, setMenuOpen] = useState(false);
@@ -12,15 +20,14 @@ export function TodoItem({todo}) {
   const navigate = useNavigate();
 
   function makeAsDone() {
-    api.put(`/todos/${todo.id}`, {...todo, done: !todo.done})
+    updateTodo(todo)
       .then ((response) => response.data)
       .then((todo) => dispatch({type: "UPDATE_TODO", payload: todo}));
   }
 
   function handleDelete() {
-    api.delete(`/todos/${todo.id}`)
-      .then(() => console.log("Deleted"))
-      .then((todo) => dispatch({type: "DELETE_TODO", payload: todo}));
+    deleteTodo(todo)
+      .then(() => dispatch({type: "DELETE_TODO", payload: todo}));
     setMenuOpen(false);
   }
 
