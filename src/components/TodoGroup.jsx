@@ -8,7 +8,7 @@ export function TodoGroup() {
   return (
     <div className={"todo-group"}>
       {state.length === 0 ? (
-        <div>Add the things you need to do today...</div>
+        <div style={{fontStyle: "italic", color: "gray"}}>Add the things you need to do today...</div>
       ) : (
         state.map((item, index) => {
           return (
