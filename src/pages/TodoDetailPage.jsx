@@ -28,6 +28,7 @@ export function TodoDetailPage() {
     <div>
       <h2 style={{textAlign: "center"}}>Todo Detail</h2>
       <Dropdown menu={{items: dropdownItems}}>
+        {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
         <a onClick={(e) => e.preventDefault()}>
           <Space>
             Select Todo

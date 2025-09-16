@@ -44,7 +44,7 @@ function App() {
     loadTodo().then((todos) =>
       dispatch({type: "LOAD_TODOS", payload: todos})
     );
-  }, [dispatch]);
+  }, [dispatch, loadTodo]);
   return (
     <div className="todo-container">
       <TodoContext.Provider value={{state, dispatch}}>
