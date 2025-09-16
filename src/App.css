@@ -50,6 +50,7 @@ nav a:hover {
   gap: 12px;
   width: 100%;
   max-width: 500px;
+  margin-top: 12px;
 }
 
 .todo-item {
