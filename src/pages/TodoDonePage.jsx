@@ -6,7 +6,7 @@ export function TodoDonePage() {
   const todoDone = state.filter((todo) => todo.done === true);
 
   return (
-    <div>
+    <div style={{justifyItems: "center"}}>
       <h2 style={{textAlign: "center"}}>Done Todos</h2>
       {todoDone.length === 0 ? (
         <p>No done todos yet.</p>
