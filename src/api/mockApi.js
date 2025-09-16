@@ -2,7 +2,7 @@ import axios from "axios";
 import {message} from "antd";
 
 export const api = axios.create({
-  baseURL: "https://68c7ac8e5d8d9f514732879a.mockapi.io/",
+  baseURL: "https://68c7ac8e5d8d9f514732879a.mockapi.io/123",
   headers: {"Content-Type": "application/json"},
   timeout: 10000,
 })
