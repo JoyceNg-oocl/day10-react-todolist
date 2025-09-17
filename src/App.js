@@ -9,7 +9,7 @@ import {TodoDetailPage} from "./pages/TodoDetailPage";
 import {DefaultLayout} from "./layouts/DefaultLayout";
 import {TodoDonePage} from "./pages/TodoDonePage";
 import {AboutUsPage} from "./pages/AboutUsPage";
-import {useTodoService} from "./useTodoService.";
+import {useTodoService} from "./useTodoService";
 
 const routes = createBrowserRouter([
   {

@@ -1,6 +1,6 @@
 import {useContext} from "react";
 import {TodoContext} from "../contexts/TodoContext";
-import {useTodoService} from "../useTodoService.";
+import {useTodoService} from "../useTodoService";
 
 export function TodoAdd() {
   const {dispatch} = useContext(TodoContext);

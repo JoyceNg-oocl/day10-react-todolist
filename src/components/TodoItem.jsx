@@ -2,7 +2,7 @@ import { useContext, useEffect, useRef, useState } from "react";
 import { Input, Modal, Tooltip } from "antd";
 import { TodoContext } from "../contexts/TodoContext";
 import { useNavigate } from "react-router-dom";
-import { useTodoService } from "../useTodoService.";
+import { useTodoService } from "../useTodoService";
 import {
   DeleteFilled,
   EditFilled,
